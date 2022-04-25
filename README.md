@@ -14,3 +14,6 @@ This project initiated with Vue and SpringBoot.
 * message board
 * What Do You Need
 * Voting
+
+## Debug
+2022/4/25 A debug in front-back interactive interfaces. If you have this bug, please download this program again.

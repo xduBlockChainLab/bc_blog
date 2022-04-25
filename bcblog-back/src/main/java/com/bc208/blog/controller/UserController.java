@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/geeker/api")
+@RequestMapping("/bc208/api")
 public class UserController {
     @Autowired
     private UsersServiceImpl usersServiceImpl;
