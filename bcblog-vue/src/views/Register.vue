@@ -171,7 +171,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$axios.post('/geeker/api/register', this.ruleForm).then(res=>{
+          this.$axios.post('/bc208/api/register', this.ruleForm).then(res=>{
             console.log(res.data);
             if(res.data.msg !== "success"){
               alert(res.data.msg);
