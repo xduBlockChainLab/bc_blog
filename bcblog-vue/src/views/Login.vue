@@ -86,7 +86,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           console.log(this.ruleForm);
-          this.$axios.post("/geeker/api/login", this.ruleForm).then(res=> {
+          this.$axios.post("/bc208/api/login", this.ruleForm).then(res=> {
             if (res.data.msg != "success") {
               alert(res.data.msg);
             } else {
