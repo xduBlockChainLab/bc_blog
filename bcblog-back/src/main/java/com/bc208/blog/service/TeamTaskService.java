@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface TeamTaskService {
      public List<TeamTask> teamTodolist( Integer type);
+     public List<TeamTask> insertTeamTask(String task_content);
 
 }

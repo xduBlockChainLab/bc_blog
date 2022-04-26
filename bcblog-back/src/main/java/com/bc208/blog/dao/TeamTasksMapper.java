@@ -10,6 +10,8 @@ import java.util.List;
 public interface TeamTasksMapper {
     List<TeamTask> queryTeamTodoList(@Param("task_type") Integer task_type );
 
+    void insertTeamTask(@Param("task_content") String task_content);
+
 
 
 }

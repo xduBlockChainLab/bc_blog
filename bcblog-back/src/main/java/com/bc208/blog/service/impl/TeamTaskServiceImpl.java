@@ -22,4 +22,16 @@ public class TeamTaskServiceImpl implements TeamTaskService {
         nullOrNot.istrue( teamTasks == null, "未找到您的任务");//判断是否存在task
         return teamTasks;
     }
+
+
+    @Transactional
+    public List<TeamTask> insertTeamTask(String task_content) {
+        System.out.println(task_content);
+//        nullOrNot.istrue(task_content == null, "内容不能为空");
+        tasksMapper.insertTeamTask(task_content);
+        List<TeamTask> teamTasks = tasksMapper.queryTeamTodoList(0);
+        System.out.println("123"+teamTasks);
+        return teamTasks;
+
+    }
 }
