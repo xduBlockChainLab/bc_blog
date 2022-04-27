@@ -10,5 +10,7 @@ public interface TeamTaskService {
      public List<TeamTask> insertTeamTask(String task_content);
      public List<TeamTask> deleteTeamTask(int task_id,int task_type);
      public TeamTask  findById(int task_id);
+     public TeamTask updateTeamTask(int task_id,String task_content);
+
 
 }

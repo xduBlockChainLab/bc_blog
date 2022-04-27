@@ -18,5 +18,8 @@ public interface TeamTasksMapper {
     TeamTask findById(@Param("task_id")int task_id);
 
 
+    void updateTeamTask(@Param("task_id") int task_id,@Param("task_content") String task_content);
+
+
 
 }

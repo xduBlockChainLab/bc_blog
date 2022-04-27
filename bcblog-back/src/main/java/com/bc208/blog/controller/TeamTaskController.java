@@ -1,7 +1,6 @@
 package com.bc208.blog.controller;
 
 import com.bc208.blog.pojo.TeamTask;
-import com.bc208.blog.pojo.UserTask;
 import com.bc208.blog.service.TeamTaskService;
 import com.bc208.blog.utils.ParamsException;
 import com.bc208.blog.utils.ResultInfo;
@@ -86,5 +85,23 @@ public class TeamTaskController {
 
 
        return resultInfo;
+    }
+    @RequestMapping("/update_teamtask")
+    @ResponseBody
+    public ResultInfo updateTask(@RequestParam("task_id")int task_id,@RequestParam("task_content") String task_content ){
+        ResultInfo resultInfo = new ResultInfo();
+
+        try {
+            TeamTask teamTask = teamTaskService.updateTeamTask(task_id, task_content);
+            resultInfo.setResult(teamTask);
+        }catch(ParamsException paramsException){
+            resultInfo.setCode(paramsException.getCode());
+            resultInfo.setMsg(paramsException.getMsg());
+            paramsException.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return resultInfo;
+
     }
 }

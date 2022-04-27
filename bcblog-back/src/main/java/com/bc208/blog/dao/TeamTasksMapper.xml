@@ -4,13 +4,17 @@
     <insert id="insertTeamTask" >
         insert into team_todolist(task_content, task_type, task_createtime, task_finishtime) values(#{task_content},0,null,null);
     </insert>
+
+    <update id="updateTeamTask">
+        update team_todolist set task_content=#{task_content} where task_id =  #{task_id};
+    </update>
+
     <delete id="deleteTeamTask">
         delete from team_todolist where task_id = #{task_id} and task_type =#{task_type};
     </delete>
 
     <select id="queryTeamTodoList" resultType="com.bc208.blog.pojo.TeamTask">
         select * from team_todolist where task_type=#{task_type}
-
     </select>
     <select id="findById" resultType="com.bc208.blog.pojo.TeamTask">
         select * from team_todolist where task_id=#{task_id}

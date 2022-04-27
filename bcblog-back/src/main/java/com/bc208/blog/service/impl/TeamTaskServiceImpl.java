@@ -19,7 +19,7 @@ public class TeamTaskServiceImpl implements TeamTaskService {
     @Transactional
     public List<TeamTask> teamTodolist(Integer type) {
         List<TeamTask> teamTasks = tasksMapper.queryTeamTodoList(0);
-        nullOrNot.istrue( teamTasks == null, "未找到您的任务");//判断是否存在task
+        nullOrNot.istrue(teamTasks == null, "未找到您的任务");//判断是否存在task
         return teamTasks;
     }
 
@@ -30,20 +30,18 @@ public class TeamTaskServiceImpl implements TeamTaskService {
         nullOrNot.istrue(task_content == null, "内容不能为空");
         tasksMapper.insertTeamTask(task_content);
         List<TeamTask> teamTasks = tasksMapper.queryTeamTodoList(0);
-        System.out.println("123"+teamTasks);
+        System.out.println("123" + teamTasks);
         return teamTasks;
 
     }
 
 
-
     @Transactional
-    public List<TeamTask> deleteTeamTask(int task_id,int task_type){
+    public List<TeamTask> deleteTeamTask(int task_id, int task_type) {
 
-        insertTeamTask("asdasdasdasaswe");
 
-        nullOrNot.istrue(findById(task_id) == null,"该任务不存在");
-        tasksMapper.deleteTeamTask(task_id,0);
+        nullOrNot.istrue(findById(task_id) == null, "该任务不存在");
+        tasksMapper.deleteTeamTask(task_id, 0);
 
         List<TeamTask> teamTasks = tasksMapper.queryTeamTodoList(0);
 
@@ -52,9 +50,19 @@ public class TeamTaskServiceImpl implements TeamTaskService {
     }
 
     @Transactional
-    public TeamTask findById(int task_id){
+    public TeamTask findById(int task_id) {
 
-        TeamTask teamTask= tasksMapper.findById(task_id);
+        TeamTask teamTask = tasksMapper.findById(task_id);
         return teamTask;
+    }
+
+    @Transactional
+    public TeamTask updateTeamTask(int task_id, String task_content) {
+        TeamTask task = findById(task_id);
+        nullOrNot.istrue(task == null, "该任务不存在");
+        tasksMapper.updateTeamTask(task_id, task_content);
+        task=findById(task_id);
+
+        return task;
     }
 }
