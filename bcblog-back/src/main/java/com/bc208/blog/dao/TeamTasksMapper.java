@@ -13,5 +13,10 @@ public interface TeamTasksMapper {
     void insertTeamTask(@Param("task_content") String task_content);
 
 
+    void deleteTeamTask(@Param("task_id") int task_id,@Param("task_type") int task_type);
+
+    TeamTask findById(@Param("task_id")int task_id);
+
+
 
 }

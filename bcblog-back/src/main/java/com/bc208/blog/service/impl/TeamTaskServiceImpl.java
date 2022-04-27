@@ -27,11 +27,34 @@ public class TeamTaskServiceImpl implements TeamTaskService {
     @Transactional
     public List<TeamTask> insertTeamTask(String task_content) {
         System.out.println(task_content);
-//        nullOrNot.istrue(task_content == null, "内容不能为空");
+        nullOrNot.istrue(task_content == null, "内容不能为空");
         tasksMapper.insertTeamTask(task_content);
         List<TeamTask> teamTasks = tasksMapper.queryTeamTodoList(0);
         System.out.println("123"+teamTasks);
         return teamTasks;
 
+    }
+
+
+
+    @Transactional
+    public List<TeamTask> deleteTeamTask(int task_id,int task_type){
+
+        insertTeamTask("asdasdasdasaswe");
+
+        nullOrNot.istrue(findById(task_id) == null,"该任务不存在");
+        tasksMapper.deleteTeamTask(task_id,0);
+
+        List<TeamTask> teamTasks = tasksMapper.queryTeamTodoList(0);
+
+        return teamTasks;
+
+    }
+
+    @Transactional
+    public TeamTask findById(int task_id){
+
+        TeamTask teamTask= tasksMapper.findById(task_id);
+        return teamTask;
     }
 }

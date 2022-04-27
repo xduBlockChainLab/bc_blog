@@ -50,7 +50,6 @@ public class TeamTaskController {
 
         try{
             List<TeamTask> teamTask= teamTaskService.insertTeamTask(task_content);
-            System.out.println(teamTask);
             resultInfo.setResult(teamTask);
         }catch (ParamsException p){
             resultInfo.setCode(p.getCode());
@@ -66,5 +65,26 @@ public class TeamTaskController {
 
 
         return resultInfo;
+    }
+
+    @RequestMapping("/delete_teamtask")
+    @ResponseBody
+    public ResultInfo deleteTask(@RequestParam("task_id")int task_id,@RequestParam("task_type" ) int task_type){
+
+        ResultInfo resultInfo =new ResultInfo();
+       try {
+           List<TeamTask> teamTasks = teamTaskService.deleteTeamTask(task_id, task_type);
+            resultInfo.setResult(teamTasks);
+       }catch(ParamsException paramsException){
+           resultInfo.setCode(paramsException.getCode());
+           resultInfo.setMsg(paramsException.getMsg());
+           paramsException.printStackTrace();
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+
+
+       return resultInfo;
     }
 }
