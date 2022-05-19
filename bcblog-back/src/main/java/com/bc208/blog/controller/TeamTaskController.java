@@ -15,7 +15,7 @@ public class TeamTaskController {
     @Autowired
     private TeamTaskService teamTaskService;
 
-    @RequestMapping(method = RequestMethod.GET,value = "/teamtasks")
+    @RequestMapping(value = "/teamtasks")
     @ResponseBody
     public ResultInfo ShowAllTasks(){
         ResultInfo resultInfo =new ResultInfo();
@@ -69,7 +69,7 @@ public class TeamTaskController {
     @RequestMapping("/delete_teamtask")
     @ResponseBody
     public ResultInfo deleteTask(@RequestParam("task_id")int task_id,@RequestParam("task_type" ) int task_type){
-
+        System.out.println("删除");
         ResultInfo resultInfo =new ResultInfo();
        try {
            List<TeamTask> teamTasks = teamTaskService.deleteTeamTask(task_id, task_type);

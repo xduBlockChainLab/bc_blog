@@ -13,6 +13,7 @@ public class UserTask {
    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
    private LocalDateTime task_createtime;
 
+
    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
    private LocalDateTime task_finishtime;
 
