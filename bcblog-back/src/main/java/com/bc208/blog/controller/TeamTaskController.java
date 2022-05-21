@@ -1,11 +1,14 @@
 package com.bc208.blog.controller;
 
 import com.bc208.blog.pojo.TeamTask;
+
 import com.bc208.blog.service.TeamTaskService;
 import com.bc208.blog.utils.ParamsException;
 import com.bc208.blog.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+
 
 import java.util.List;
 
@@ -15,7 +18,9 @@ public class TeamTaskController {
     @Autowired
     private TeamTaskService teamTaskService;
 
+
     @RequestMapping(value = "/teamtasks")
+
     @ResponseBody
     public ResultInfo ShowAllTasks(){
         ResultInfo resultInfo =new ResultInfo();
@@ -37,6 +42,7 @@ public class TeamTaskController {
         System.out.println(teamTasks);
 
         return resultInfo;
+
 
     }
 
@@ -122,6 +128,7 @@ public class TeamTaskController {
             e.printStackTrace();
         }
         return resultInfo;
+
 
     }
 }

@@ -19,6 +19,7 @@ public class TeamTaskServiceImpl implements TeamTaskService {
     @Transactional
     public List<TeamTask> teamTodolist(Integer type) {
         List<TeamTask> teamTasks = tasksMapper.queryTeamTodoList(0);
+
         nullOrNot.istrue(teamTasks == null, "未找到您的任务");//判断是否存在task
         return teamTasks;
     }
@@ -78,4 +79,5 @@ public class TeamTaskServiceImpl implements TeamTaskService {
     public void changeStatus(int task_id,int task_type) {
         tasksMapper.changeStatus(task_id,task_type);
     }
+
 }

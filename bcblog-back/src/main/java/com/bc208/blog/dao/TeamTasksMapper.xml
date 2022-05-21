@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.bc208.blog.dao.TeamTasksMapper">
+
     <insert id="insertTeamTask" >
         insert into team_todolist(task_content, task_type, task_createtime, task_finishtime) values(#{task_content},0,null,null);
     </insert>
@@ -16,9 +17,11 @@
         delete from team_todolist where task_id = #{task_id} and task_type =#{task_type};
     </delete>
 
+
     <select id="queryTeamTodoList" resultType="com.bc208.blog.pojo.TeamTask">
         select * from team_todolist where task_type=#{task_type}
     </select>
+
     <select id="findById" resultType="com.bc208.blog.pojo.TeamTask">
         select * from team_todolist where task_id=#{task_id}
     </select>

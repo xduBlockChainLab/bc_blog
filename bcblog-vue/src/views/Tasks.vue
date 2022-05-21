@@ -7,7 +7,9 @@
           <el-card class="box-card" v-for="(item,id) in tasks" :key="'taskId-'+item.task_id" ref="boxCards">
             <div class="task-item">
               <div class="finishButton-box">
+
 <!--                设置任务已完成-->
+
                 <el-button size="mini" class="finishButton" circle @mouseover.native="hoverButton(id)"
                            @mouseleave.native="leaveButton(id)" @click="changeTaskStatus(item.task_id, item.task_type)">
                   <i class="el-icon-check" ref="icons" style="color: white"></i>
@@ -163,10 +165,12 @@ export default {
     leaveButton(index) {
       this.$refs.icons[index].style.color = "white";
     },
+
     changeTaskStatus(task_id, task_type) { //status=1，代表对已完成任务操作，0为对未完成任务操作
 
       let msg = '是否确认完成该任务?';
       if (task_type === 0) { // 让用户再确认一下
+
         msg = '是否确认还原为未完成?';
       }
       this.$confirm(msg, '提示', {
@@ -177,6 +181,7 @@ export default {
         let param = new FormData;
         param.append("task_id", task_id);
         param.append("task_type", task_type);
+
 
         this.$axios.post("/bc208/api/change_status", param).then(res => {
           this.loadAllTasks();
@@ -196,11 +201,13 @@ export default {
     addTask() {
       let param = new FormData;
 
+
       param.append("task_content", this.new_task);
       console.log(this.new_task)
       console.log(this.new_task.trim())
       this.$axios.post("/bc208/api/insert_teamtask", param).then(res => {
         this.loadAllTasks();
+
         this.$message({
           type: 'success',
           message: '添加成功'
@@ -212,13 +219,17 @@ export default {
     loadAllTasks() {
       let pattern = this.$store.state.filterPattern;
       let param = new FormData;
+
       // param.append("token", this.$store.state.user.token)
       this.$axios.post("/bc208/api/teamtasks").then(res => {
+
         //this.tasks = Object.assign({},res.data.result)
         this.tasks = res.data.result
         this.refresh = Math.random(); //强制触发vue的diff重新渲染
       })
+
       this.$axios.post("/bc208/api/show_finished").then(res => {
+
         this.finishedTasks = res.data.result
         this.finishedTasksCount = this.finishedTasks.length
       })
@@ -239,11 +250,13 @@ export default {
     },
     submitChange(task_id,id){
       let param = new FormData;
+
       // param.append("token", this.$store.state.user.token);
       param.append("task_id", task_id);
       param.append("task_content", this.taskText);
       // console.log(param);
       this.$axios.post("/bc208/api//update_teamtask", param).then(res=>{
+
         console.log(res);
         if(res.data.msg==="success") {
           this.$refs.taskInput[id].style.display = "none";
@@ -262,10 +275,12 @@ export default {
         type: 'warning'
       }).then(() => {
         let param = new FormData;
+
         // param.append("token", this.$store.state.user.token);
         param.append("task_id", task_id);
         param.append("task_type","0");
         this.$axios.post("/bc208/api/delete_teamtask", param).then(res => {
+
           this.loadAllTasks();//删除了再加载
           this.$message({
             type: 'success',

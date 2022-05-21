@@ -9,6 +9,7 @@ import java.util.List;
 @Mapper
 public interface TeamTasksMapper {
     List<TeamTask> queryTeamTodoList(@Param("task_type") Integer task_type );
+
     List<TeamTask> queryFinishedList();
 
     void insertTeamTask(@Param("task_content") String task_content);
@@ -23,6 +24,7 @@ public interface TeamTasksMapper {
 
 
     void changeStatus(@Param("task_id") int task_id,@Param("task_type") int task_type);
+
 
 
 

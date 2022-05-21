@@ -38,6 +38,7 @@ const routes = [
         path: '/tasks',
         name:'Tasks',
         component: ()=> import('../views/Tasks')
+
     }
 
 ]

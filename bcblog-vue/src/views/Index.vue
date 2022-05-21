@@ -58,7 +58,10 @@
                 this.$router.push({name:"Tasks"});
             },
             toAbout() {
+
                 console.log("go to About!")
+
+                this.$router.push({name:"Application"});
             },
 
         }

@@ -7,7 +7,9 @@ CREATE TABLE `team_todolist` (
                                  `task_createtime` datetime DEFAULT NULL,
                                  `task_finishtime` datetime DEFAULT NULL,
                                  PRIMARY KEY (`task_id`)
+
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 
 /*Data for the table `user_todolist` */
 
