@@ -24,6 +24,8 @@ public class TeamTaskServiceImpl implements TeamTaskService {
     }
 
 
+
+
     @Transactional
     public List<TeamTask> insertTeamTask(String task_content) {
         System.out.println(task_content);
@@ -64,5 +66,16 @@ public class TeamTaskServiceImpl implements TeamTaskService {
         task=findById(task_id);
 
         return task;
+    }
+
+    @Transactional
+    public List<TeamTask> findFinished() {
+        List<TeamTask> teamTasks = tasksMapper.queryFinishedList();
+        return teamTasks;
+    }
+
+    @Override
+    public void changeStatus(int task_id,int task_type) {
+        tasksMapper.changeStatus(task_id,task_type);
     }
 }

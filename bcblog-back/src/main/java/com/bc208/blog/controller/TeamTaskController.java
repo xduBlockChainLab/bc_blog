@@ -40,6 +40,26 @@ public class TeamTaskController {
 
     }
 
+    @ResponseBody
+    @RequestMapping("change_status")
+    public  ResultInfo changeStatus(@RequestParam("task_id")int task_id,@RequestParam("task_type") int task_type){
+        ResultInfo resultInfo = new ResultInfo();
+        teamTaskService.changeStatus(task_id,task_type);
+
+        return resultInfo;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/show_finished")
+    public ResultInfo showFinished(){
+        ResultInfo resultInfo = new ResultInfo();
+
+        List<TeamTask> finished = teamTaskService.findFinished();
+        resultInfo.setResult(finished);
+        return resultInfo;
+    }
+
     @RequestMapping("/insert_teamtask")
     @ResponseBody
     public ResultInfo insertTask(@RequestParam("task_content")String task_content){

@@ -7,6 +7,7 @@
           <el-card class="box-card" v-for="(item,id) in tasks" :key="'taskId-'+item.task_id" ref="boxCards">
             <div class="task-item">
               <div class="finishButton-box">
+<!--                设置任务已完成-->
                 <el-button size="mini" class="finishButton" circle @mouseover.native="hoverButton(id)"
                            @mouseleave.native="leaveButton(id)" @click="changeTaskStatus(item.task_id, item.task_type)">
                   <i class="el-icon-check" ref="icons" style="color: white"></i>
@@ -162,10 +163,10 @@ export default {
     leaveButton(index) {
       this.$refs.icons[index].style.color = "white";
     },
-    changeTaskStatus(task_id, task_type) { //status=0，代表对已完成任务操作，1为对未完成任务操作
+    changeTaskStatus(task_id, task_type) { //status=1，代表对已完成任务操作，0为对未完成任务操作
 
       let msg = '是否确认完成该任务?';
-      if (task_type === 1) { // 让用户再确认一下
+      if (task_type === 0) { // 让用户再确认一下
         msg = '是否确认还原为未完成?';
       }
       this.$confirm(msg, '提示', {
@@ -176,8 +177,8 @@ export default {
         let param = new FormData;
         param.append("task_id", task_id);
         param.append("task_type", task_type);
-        param.append("token", this.$store.state.user.token);
-        this.$axios.post("/bc208/api/change", param).then(res => {
+
+        this.$axios.post("/bc208/api/change_status", param).then(res => {
           this.loadAllTasks();
           let msg = '完成任务  ' + this.expressions[Math.floor((Math.random() * 5))] + '  累计完成任务 ' + (this.finishedTasksCount + 1);
           if (task_type === 1) {
@@ -217,10 +218,10 @@ export default {
         this.tasks = res.data.result
         this.refresh = Math.random(); //强制触发vue的diff重新渲染
       })
-      // this.$axios.post("/bc208/api/delete_teamtask").then(res => {
-      //   this.finishedTasks = res.data.result
-      //   this.finishedTasksCount = this.finishedTasks.length
-      // })
+      this.$axios.post("/bc208/api/show_finished").then(res => {
+        this.finishedTasks = res.data.result
+        this.finishedTasksCount = this.finishedTasks.length
+      })
     },
     loadUnfinishedTasks() {
       let param = new FormData;
