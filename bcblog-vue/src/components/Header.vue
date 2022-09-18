@@ -9,11 +9,11 @@
             <el-menu-item index="2" id="item-2">任务清单</el-menu-item>
             <el-submenu index="3" id="item-3">
                 <template slot="title">工作室管理</template>
-                <el-menu-item index="3-1">Ideas</el-menu-item>
-                <el-menu-item index="3-2">留言板</el-menu-item>
+                <el-menu-item index="3-1" >成员页面</el-menu-item>
+                <el-menu-item index="3-2">管理者页面</el-menu-item>
                 <el-menu-item index="3-3">事件投票</el-menu-item>
                 <el-menu-item index="3-4">需求上报</el-menu-item>
-            </el-submenu>
+             </el-submenu>
             <el-menu-item index="4" id="item-4">发展历史</el-menu-item>
             <el-menu-item index="5" id="item-5">功能测试区</el-menu-item>
             <el-submenu index="6" class="flexible-content">
@@ -92,10 +92,11 @@
                         this.$router.push("/tasks")
                         break;
                     case "3-1": // default filter
-                        _this.$store.commit('DEFAULT_FILTER');
+
+                        window.open("http://"+"127.0.0.1:8080","_self")
                         break;
                     case "3-2":
-                        _this.$store.commit('SET_FILTER', "2");
+                      window.open("http://"+"127.0.0.1:8081","_self")
                         break;
                     case "3-3":
                         _this.$store.commit('SET_FILTER', "3");
@@ -108,6 +109,7 @@
             loginEvent() {
                 router.push({name:"Login"});
             },
+
             toIndex() {
                 router.push({name:'Index'});
             },
