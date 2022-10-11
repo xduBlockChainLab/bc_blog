@@ -8,4 +8,8 @@ public class Apply {
     private String phone;
     private int sort;
     private String description;
+    private int year;
+    private String[] interests;
+    private int way;
+
 }

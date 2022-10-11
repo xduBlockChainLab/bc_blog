@@ -114,7 +114,15 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('submit!');
+
+
+                      this.$axios.post("/bc208/apply/submit", this.ruleForm).then(res=> {
+                        if (res.data.msg !== "success") {
+                          alert(res.data.msg);
+                        } else {
+                            alert("success")
+                        }
+                      })
                     } else {
                         console.log('error submit!!');
                         return false;

@@ -23,7 +23,7 @@ public class ApplyController {
 
         ResultInfo resultInfo = new ResultInfo();
         applyMapper.insertApply(apply);
-        resultInfo.setResult("yes");
+        resultInfo.setResult("success");
         return resultInfo;
 
     }
